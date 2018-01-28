@@ -1,0 +1,76 @@
+{
+    "SR_Size":
+    {
+        "Group_Info" :
+        {
+            "Case_Range"      : [1, 100],
+            "SrcImg_InSize"   : {},
+            "LUT_Info"        : {},
+            "ImgFormat"       : {},
+            "RandomSeed"      : 255,
+
+            "FuncBypass"      : {"rg_o2o_bypass":0},
+            "FuncDef_Num"     : [1, 1, 1, 5, 92],
+            "Out_title"       : ["Common", "O2O", "SAD", "FT"]
+        },
+
+        "FuncDef" :
+        [
+            { "Common":"constant", "O2O":"constant", "SAD":"constant", "FT":"constant" },
+            { "Common":"max"     , "O2O":"constant", "SAD":"constant", "FT":"constant" },
+            { "Common":"min"     , "O2O":"constant", "SAD":"constant", "FT":"constant" },
+            { "Common":"ptnlist" , "O2O":"constant", "SAD":"constant", "FT":"constant" },
+            { "Common":"random"  , "O2O":"random"  , "SAD":"random"  , "FT":"random"   }
+        ]
+    },
+
+
+    "SR_O2O":
+    {
+        "Group_Info" :
+        {
+            "Case_Range"      : [1, 27],
+            "SrcImg_InSize"   : {},
+            "LUT_Info"        : {},
+            "ImgFormat"       : {},
+            "RandomSeed"      : 66,
+
+            "FuncBypass"      : {},
+            "FuncDef_Num"     : [1, 5, 1, 20],
+            "Out_title"       : ["Common", "O2O"]
+        },
+
+        "FuncDef" :
+        [
+            { "Common":"constant", "O2O":"random"  , "SAD":"random"  , "FT":"random"  },
+            { "Common":"max"     , "O2O":"constant", "SAD":"constant", "FT":"constant"},
+            { "Common":"min"     , "O2O":"constant", "SAD":"constant", "FT":"constant"},
+            { "Common":"random"  , "O2O":"random"  , "SAD":"random"  , "FT":"random"  }
+        ]
+    },
+
+
+    "SR_FT":
+    {
+        "Group_Info" :
+        {
+            "Case_Range"      : [1, 38],
+            "SrcImg_InSize"   : {},
+            "LUT_Info"        : {},
+            "ImgFormat"       : {},
+            "RandomSeed"      : 88,
+
+            "FuncBypass"      : {},
+            "FuncDef_Num"     : [1, 1, 6, 30],
+            "Out_title"       : ["Common", "FT"]
+        },
+
+        "FuncDef" :
+        [
+            { "Common":"constant", "O2O":"random"  , "SAD":"random"  , "FT":"random"  },
+            { "Common":"max"     , "O2O":"constant", "SAD":"constant", "FT":"constant"},
+            { "Common":"min"     , "O2O":"constant", "SAD":"constant", "FT":"constant"},
+            { "Common":"random"  , "O2O":"random"  , "SAD":"random"  , "FT":"random"  }
+        ]
+    }
+}

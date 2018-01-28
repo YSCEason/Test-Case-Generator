@@ -1,0 +1,140 @@
+{
+    "Common":
+    {
+        "rg_in_width"          : {
+                                    "constant"   : "480",
+                                    "max"        : "960",
+                                    "min"        : "10",
+                                    "ind_method" : "i_randint(10, 960)",
+                                    "corr_method": "",
+                                    "ptnlist"    : ["30"],
+                                    "constraint" : ["rg_in_width <= 960", "rg_in_width >= 0"]
+                                 },
+        "rg_in_height"         : {
+                                    "constant"   : "160",
+                                    "max"        : "360",
+                                    "min"        : "8",
+                                    "ind_method" : "i_rand_even(2, 360/2)",
+                                    "corr_method": "",
+                                    "ptnlist"    : ["124", "2+rg_in_width", "4+rg_in_width", "48"],
+                                    "constraint" : ["rg_in_height <= 360", "rg_in_height >= 0", "chk_align(rg_in_height, 2)"]
+                                 },
+        "rg_mask_type"         : {
+                                    "constant"   : "10",
+                                    "max"        : "255",
+                                    "min"        : "64",
+                                    "ind_method" : "",
+                                    "corr_method": "3 if (rg_in_height>20) else 2",
+                                    "user_def"   : [],
+                                    "constraint" : ["chk_align(rg_mask_type, 1)"]
+                                 },
+        "rg_subp_sel"          : {
+                                    "constant"   : "0",
+                                    "max"        : "1",
+                                    "min"        : "0",
+                                    "ind_method" : "i_randlist([0, 1])"
+                                 },
+        "rg_tw_dp_pack_format" : {
+                                    "constant"   : "1",
+                                    "max"        : "2",
+                                    "min"        : "1",
+                                    "ind_method" : "i_randlist([1, 2])"
+                                 },
+        "rg_tw_cl_pack_format" : {
+                                    "constant"   : "1",
+                                    "max"        : "1",
+                                    "min"        : "1",
+                                    "ind_method" : "1",
+                                    "corr_method": ""
+                                 },
+        "in_w"                 : {
+                                    "constant"   : "rg_in_width",
+                                    "max"        : "rg_in_width",
+                                    "min"        : "rg_in_width",
+                                    "ind_method" : "rg_in_width"
+                                 },
+        "in_h"                 : {
+                                    "constant"   : "rg_in_height",
+                                    "max"        : "rg_in_height",
+                                    "min"        : "rg_in_height",
+                                    "ind_method" : "rg_in_height"
+                                 },
+        "woi_x"                : {
+                                    "constant"   : "0",
+                                    "max"        : "0",
+                                    "min"        : "0",
+                                    "ind_method" : "0"
+                                 },
+        "woi_y"                : {
+                                    "constant"   : "0",
+                                    "max"        : "0",
+                                    "min"        : "0",
+                                    "ind_method" : "0"
+                                 },
+        "woi_w"                : {
+                                    "constant"   : "rg_in_width",
+                                    "max"        : "rg_in_width",
+                                    "min"        : "rg_in_width",
+                                    "ind_method" : "rg_in_width"
+                                 },
+        "woi_h"                : {
+                                    "constant"   : "rg_in_height",
+                                    "max"        : "rg_in_height",
+                                    "min"        : "rg_in_height",
+                                    "ind_method" : "rg_in_height"
+                                 }
+    },
+
+    "O2O":
+    {
+        "rg_o2o_bypass"        :{},
+        "rg_o2o_confidence_th" :{
+                                    "constant"     : "6",
+                                    "max"          : "i_max_bits(3)",
+                                    "min"          : "0",
+                                    "ind_method"   : "i_randint(0 , i_max_bits(3))",
+                                    "corr_method"  : "",
+                                    "user_def"     : [],
+                                    "constraint"   : []
+                                 },
+        "rg_o2o_diff_th"       : {
+                                    "constant"     : "0",
+                                    "max"          : "i_max_bits(12)",
+                                    "min"          : "0",
+                                    "ind_method"   : "i_randint(0 , i_max_bits(12))"
+                                 }
+    },
+
+    "SAD":
+    {
+        "rg_sad_node[Idx]" :{
+                                "LutIdxRange"  : [0, 20],
+                                "constant"     : "125",
+                                "max"          : "255",
+                                "min"          : "0",
+                                "ind_method"   : "",
+                                "corr_method"  : "lut_sort_incre([0,20], [0, 255])",
+                                "ptnlist"      : ["444", "555", "999"],
+                                "constraint"   : ["chk_align(rg_sad_node[Idx], 1)"] }
+    },
+
+    "FT":
+    {
+        "rg_ft_th"       : {
+                               "constant"     : "0",
+                               "max"          : "i_max_bits(4)",
+                               "min"          : "0",
+                               "ind_method"   : "i_rand_even(0, i_max_bits(4))",
+                               "corr_method"  : "",
+                               "constraint"   : ["chk_even(rg_ft_th)"] },
+        "rg_ft_node[Idx]": {
+                               "LutIdxRange"  : [0, 20],
+                               "constant"     : "124",
+                               "max"          : "255",
+                               "min"          : "0",
+                               "ind_method"   : "",
+                               "corr_method"  : "lut_sort_desc([0, 20], [0, 255])",
+                               "user_cb"      : "",
+                               "constraint"   : ["chk_align(rg_ft_node[Idx], 1)"] }
+    }
+}
